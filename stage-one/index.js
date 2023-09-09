@@ -24,6 +24,7 @@ app.get('/api', (req, res) => {
     }
 
     const githubUrl = 'https://github.com/Ndumatt1/HNGx-INTERN.git';
+    github_file_url = 'https://github.com/Ndumatt1/HNGx-INTERN/blob/main/stage-one/index.js';
 
     statusCode = res.statusCode;
 
@@ -32,7 +33,7 @@ app.get('/api', (req, res) => {
         current_day: today,
         utc_time: date,
         track,
-        //github_file_url
+        github_file_url,
         github_repo_url: githubUrl,
         status_code: statusCode
     });
