@@ -14,21 +14,12 @@ app.get('/api', (req, res) => {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const today = days[day];
 
-    //const twoMinutesInMillis = 2 * 60 * 1000;
-    //const lowerBoundary = new Date(date.getTime() - twoMinutesInMillis);
-    //const upperBoundary = new Date(date.getTime() + twoMinutesInMillis);
-
-    //let utc_time;
-    /*if (date >= lowerBoundary && date <= upperBoundary) {
-        utc_time = date;
-     }*/
-
     const githubUrl = 'https://github.com/Ndumatt1/HNGx-INTERN.git';
     const github_file_url = 'https://github.com/Ndumatt1/HNGx-INTERN/blob/main/stage-one/index.js';
 
-    statusCode = res.statusCode;
+    const statusCode = res.statusCode;
 
-    const utc_time = new Date(date.setMilliseconds(0)).toISOString();
+    const utc_time = date.toISOString().split('.')[0] + 'Z';//new Date(date.setMilliseconds(0)).toISOString();
 
     res.json({
         slack_name,
