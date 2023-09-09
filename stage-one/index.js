@@ -24,14 +24,14 @@ app.get('/api', (req, res) => {
     }
 
     const githubUrl = 'https://github.com/Ndumatt1/HNGx-INTERN.git';
-    github_file_url = 'https://github.com/Ndumatt1/HNGx-INTERN/blob/main/stage-one/index.js';
+    const github_file_url = 'https://github.com/Ndumatt1/HNGx-INTERN/blob/main/stage-one/index.js';
 
     statusCode = res.statusCode;
 
     res.json({
         slack_name,
         current_day: today,
-        utc_time: date,
+        utc_time,
         track,
         github_file_url,
         github_repo_url: githubUrl,
