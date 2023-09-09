@@ -18,10 +18,10 @@ app.get('/api', (req, res) => {
     const lowerBoundary = new Date(date.getTime() - twoMinutesInMillis);
     const upperBoundary = new Date(date.getTime() + twoMinutesInMillis);
 
-    let utc_time;
-    if (date >= lowerBoundary && date <= upperBoundary) {
+    //let utc_time;
+    /*if (date >= lowerBoundary && date <= upperBoundary) {
         utc_time = date;
-    }
+     }*/
 
     const githubUrl = 'https://github.com/Ndumatt1/HNGx-INTERN.git';
     const github_file_url = 'https://github.com/Ndumatt1/HNGx-INTERN/blob/main/stage-one/index.js';
@@ -31,7 +31,7 @@ app.get('/api', (req, res) => {
     res.json({
         slack_name,
         current_day: today,
-        utc_time,
+        utc_time: utc_time = new Date(date.setMilliseconds(0)).toISOString,
         track,
         github_file_url,
         github_repo_url: githubUrl,
