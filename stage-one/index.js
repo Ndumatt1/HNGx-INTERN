@@ -14,9 +14,9 @@ app.get('/api', (req, res) => {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const today = days[day];
 
-    const twoMinutesInMillis = 2 * 60 * 1000;
-    const lowerBoundary = new Date(date.getTime() - twoMinutesInMillis);
-    const upperBoundary = new Date(date.getTime() + twoMinutesInMillis);
+    //const twoMinutesInMillis = 2 * 60 * 1000;
+    //const lowerBoundary = new Date(date.getTime() - twoMinutesInMillis);
+    //const upperBoundary = new Date(date.getTime() + twoMinutesInMillis);
 
     //let utc_time;
     /*if (date >= lowerBoundary && date <= upperBoundary) {
@@ -28,10 +28,12 @@ app.get('/api', (req, res) => {
 
     statusCode = res.statusCode;
 
+    const utc_time = new Date(date.setMilliseconds(0)).toISOString();
+
     res.json({
         slack_name,
         current_day: today,
-        utc_time: utc_time = new Date(date.setMilliseconds(0)).toISOString,
+        utc_time,
         track,
         github_file_url,
         github_repo_url: githubUrl,
