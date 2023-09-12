@@ -1,6 +1,6 @@
 const User = require('../model/users');
 
-const dataModyfyingRequest = async (req, res) => {
+const dataRequest = async (req, res) => {
     try {
         const { method } = req;
 
@@ -12,7 +12,18 @@ const dataModyfyingRequest = async (req, res) => {
             return res.status(400).json({ error: 'Only attribute with string value is expected!' });
             }
             const user = await User.create({ name });
-            return res.status(201).json({ message: 'User created Successfully!' });
+            return res.status(201).json({ message: `User created Successfully with id: ${user.id}` });
+
+        // HANDLE GET REQUEST
+    } else if (method === 'GET') {
+        const { user_id } = req.params;
+        
+        const user = await User.findOne({ where: { id: user_id } });
+
+        if (!user) {
+            return res.status(404).json({ error: 'User not found!' });
+        }
+        return res.status(200).json({ User: user.name });
 
             //HANDLE PUT REQUEST
         } else if (method === 'PUT') {
@@ -44,16 +55,6 @@ const dataModyfyingRequest = async (req, res) => {
             await User.destroy({ where: { id: user_id } });
 
             return res.status(200).json({ message: 'User deleted successfully!' });
-
-        } else if (method === 'GET') {
-            const { user_id } = req.params;
-            
-            const user = await User.findOne({ where: { id: user_id } });
-
-            if (!user) {
-                return res.status(404).json({ error: 'User not found!' });
-            }
-            return res.status(200).json({ User: user.name });
         }
     } catch(error) {
         console.error(`An error occured! ${error}`);
@@ -62,4 +63,4 @@ const dataModyfyingRequest = async (req, res) => {
 };
 
 
-module.exports = dataModyfyingRequest;
+module.exports = dataRequest;

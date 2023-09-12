@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const dataModyfyingRequest = require('../controller/controller');
+const dataRequest = require('../controller/controller');
 
-router.post('/api', dataModyfyingRequest);
-router.put('/api/:user_id', dataModyfyingRequest);
-router.delete('/api/:user_id', dataModyfyingRequest);
-router.get('/api/:user_id', dataModyfyingRequest);
+router.post('/api', dataRequest);
+router.put('/api/:user_id', dataRequest);
+router.delete('/api/:user_id', dataRequest);
+router.get('/api/:user_id', dataRequest);
 
 
 module.exports = router;
